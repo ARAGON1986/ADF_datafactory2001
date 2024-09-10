@@ -1,0 +1,132 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "datafactoryaragon"
+		},
+		"Datalake2001_ls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'Datalake2001_ls'"
+		},
+		"Dataworkspace2001_ls_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Dataworkspace2001_ls'"
+		},
+		"appdb_ls_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'appdb_ls'"
+		},
+		"appvm_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'appvm'"
+		},
+		"Datalake2001_ls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake2001.dfs.core.windows.net/"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "dataworkspace2001.sql.azuresynapse.net"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "datapool"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
+		},
+		"appvm_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\inetpub\\logs\\LogFiles\\W3SVC1"
+		},
+		"appvm_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "appadmin"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "datafactoryaragon_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Datalake2001_ls_accountKey": {
+						"value": "[parameters('Datalake2001_ls_accountKey')]"
+					},
+					"Dataworkspace2001_ls_password": {
+						"value": "[parameters('Dataworkspace2001_ls_password')]"
+					},
+					"appdb_ls_connectionString": {
+						"value": "[parameters('appdb_ls_connectionString')]"
+					},
+					"Datalake2001_ls_properties_typeProperties_url": {
+						"value": "[parameters('Datalake2001_ls_properties_typeProperties_url')]"
+					},
+					"Dataworkspace2001_ls_properties_typeProperties_server": {
+						"value": "[parameters('Dataworkspace2001_ls_properties_typeProperties_server')]"
+					},
+					"Dataworkspace2001_ls_properties_typeProperties_database": {
+						"value": "[parameters('Dataworkspace2001_ls_properties_typeProperties_database')]"
+					},
+					"Dataworkspace2001_ls_properties_typeProperties_userName": {
+						"value": "[parameters('Dataworkspace2001_ls_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "datafactoryaragon_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"appvm_password": {
+						"value": "[parameters('appvm_password')]"
+					},
+					"appvm_properties_typeProperties_host": {
+						"value": "[parameters('appvm_properties_typeProperties_host')]"
+					},
+					"appvm_properties_typeProperties_userId": {
+						"value": "[parameters('appvm_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'datafactoryaragon_ArmTemplate_0')]"
+			]
+		}
+	]
+}

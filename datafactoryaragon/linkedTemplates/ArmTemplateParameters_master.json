@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactoryaragon"
+		},
+		"Datalake2001_ls_accountKey": {
+			"value": ""
+		},
+		"Dataworkspace2001_ls_password": {
+			"value": ""
+		},
+		"appdb_ls_connectionString": {
+			"value": ""
+		},
+		"appvm_password": {
+			"value": ""
+		},
+		"Datalake2001_ls_properties_typeProperties_url": {
+			"value": "https://datalake2001.dfs.core.windows.net/"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_server": {
+			"value": "dataworkspace2001.sql.azuresynapse.net"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_database": {
+			"value": "datapool"
+		},
+		"Dataworkspace2001_ls_properties_typeProperties_userName": {
+			"value": "sqladminuser"
+		},
+		"appvm_properties_typeProperties_host": {
+			"value": "C:\\inetpub\\logs\\LogFiles\\W3SVC1"
+		},
+		"appvm_properties_typeProperties_userId": {
+			"value": "appadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
