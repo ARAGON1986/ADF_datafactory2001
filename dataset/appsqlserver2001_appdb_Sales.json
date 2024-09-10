@@ -1,0 +1,13 @@
+{
+	"name": "appsqlserver2001_appdb_Sales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "appdb_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

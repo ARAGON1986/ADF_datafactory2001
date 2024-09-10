@@ -1,0 +1,18 @@
+{
+	"name": "datalake2001_logfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalake2001_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "logs"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,9 @@
+{
+	"name": "datafactoryaragon",
+	"location": "japaneast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f25f589f-3667-4894-9055-cd59c541fd00",
+		"tenantId": "b742fcbf-24e5-40d4-9108-a9281bbdea75"
+	}
+}

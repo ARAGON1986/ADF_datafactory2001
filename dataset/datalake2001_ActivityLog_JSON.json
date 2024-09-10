@@ -1,0 +1,19 @@
+{
+	"name": "datalake2001_ActivityLog_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalake2001_ls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "json"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
